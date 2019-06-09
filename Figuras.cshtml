@@ -1,0 +1,181 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+@using P1_POORazor_ÁreaPerimetro_;
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <h3>Calcular Perímetro y Área</h3>
+        <h4>
+            Programa 1.<br />
+            Diseñar una aplicación orientada a objetos en ASP .NET que permita <br />
+            calcular el área y el perímetro de las siguientes figuras geométricas: <br />
+            un cuadrado, un rectángulo, un triángulo y un círculo.
+        </h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td><h2>Cuadrado</h2></td>
+                        <td><h2>Rectángulo</h2></td>
+                        <td><h2>Circulo</h2></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>
+                            <form method="post">
+                                <p>Lado: <input type="number" name="txtLadoCuadrado" /></p>
+                                <p><input type="submit" value="Calcular" id="CCuadrado" /></p>
+                                @{
+                                    if (IsPost)
+                                    {
+                                        double lado = Convert.ToDouble(Request["txtLadoCuadrado"]);
+
+                                        Cuadrado objCuadrado = new Cuadrado(lado);
+                                        double PCuadrado = objCuadrado.PerimetroCuadrado();
+                                        double ACuadrado = objCuadrado.AreaCuadrado();
+                                        <p>Perímetro: @PCuadrado</p>
+                                        <p>Área: @ACuadrado</p>
+                                    }
+                                }
+                            </form>
+                        </th>
+                        <th>
+                            <form method="post">
+                                <p>Base: <input type="number" name="txtBaseRectangulo" /></p>
+                                <p>Altura: <input type="number" name="txtAlturaRextangulo" /></p>
+                                <p><input type="submit" value="Calcular" id="CRectangulo" /></p>
+                                @{
+                                    if (IsPost)
+                                    {
+                                        double b = Convert.ToDouble(Request["txtBaseRectangulo"]);
+                                        double h = Convert.ToDouble(Request["txtAlturaRextangulo"]);
+
+                                        Rectangulo objRectangulo = new Rectangulo(b, h);
+                                        double PRectangulo = objRectangulo.PerimetroRectangulo();
+                                        double ARectangulo = objRectangulo.AreaRectangulo();
+                                        <p>Perímetro: @PRectangulo</p>
+                                        <p>Área: @ARectangulo</p>
+                                    }
+                                }
+                            </form>
+                        </th>
+                        <th>
+                            <form method="post">
+                                <p>Radio: <input type="number" name="txtRadio" /></p>
+                                <p><input type="submit" value="Calcular" id="CCirculo" /></p></
+                                @{
+                                    if (IsPost)
+                                    {
+                                        double r = Convert.ToDouble(Request["txtRadio"]);
+
+                                        Circulo objCirculo = new Circulo(r);
+                                        double PCircuclo = objCirculo.PerimetroCirculo();
+                                        double ACirculo = objCirculo.AreaCirculo();
+                                        <p>Perímetro: @PCircuclo</p>
+                                        <p>Área: @ACirculo</p>
+                                    }
+                                }
+                            </form>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Tríangulos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <td><h2>Tríangulo Equilátero</h2></td>
+                        <td><h2>Tríangulo Isósceles</h2></td>
+                        <td><h2>Tríangulo Escaleno</h2></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <form method="post">
+                                <p>Lado1: <input type="number" name="txtLadoEquilatero1" /></p>
+                                <p>Lado2: <input type="number" name="txtLadoEquilatero2" /></p>
+                                <p>Base: <input type="number" name="txtBaseEquilatero" /></p>
+                                <p>Altura: <input type="number" name="txtAlturaEquilatero" /></p>
+                                <p><input type="submit" value="Calcular" id="CEquilatero" /></p>
+                                @{
+                                    if (IsPost)
+                                    {
+                                        double ba = Convert.ToDouble(Request["txtBaseEquilatero"]);
+                                        double a = Convert.ToDouble(Request["txtLadoEquilatero2"]);
+                                        double c = Convert.ToDouble(Request["txtLadoEquilatero3"]);
+                                        double al = Convert.ToDouble(Request["txtAlturaEquilatero"]);
+
+                                        Triangulo objTrianguloE = new Triangulo(ba, a, c, al);
+                                        double PTEquilatero = objTrianguloE.PerimetroTriangulo();
+                                        double ATEquilatero = objTrianguloE.AreaTriangulo();
+                                        <p>Perímetro:  @PTEquilatero</p>
+                                        <p>Área: @ATEquilatero</p>
+                                    }
+                                }
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post">
+                                <p>Lado1: <input type="number" name="txtLadoIsosceles1" /></p>
+                                <p>Lado2: <input type="number" name="txtLadoIsosceles2" /></p>
+                                <p>Base: <input type="number" name="txtBaseIsosceles" /></p>
+                                <p>Altura: <input type="number" name="txtAlturaIsosceles" /></p>
+                                <p><input type="submit" value="Calcular" id="CIsosceles" /></p>
+                                @{
+                                    if (IsPost)
+                                    {
+                                        double bas = Convert.ToDouble(Request["txtBaseIsosceles"]);
+                                        double l1 = Convert.ToDouble(Request["txtLadoIsosceles1"]);
+                                        double l2 = Convert.ToDouble(Request["txtLadoIsosceles2"]);
+                                        double alt = Convert.ToDouble(Request["txtAlturaEquilatero"]);
+
+                                        Triangulo objTrianguloI = new Triangulo(bas, l1, l2, alt);
+                                        double PTIsosceles = objTrianguloI.PerimetroTriangulo();
+                                        double ATIsosceles = objTrianguloI.AreaTriangulo();
+                                        <p>Perímetro: @PTIsosceles</p>
+                                        <p>Área: @ATIsosceles</p>
+                                    }
+                                }
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post">
+                                <p>Lado 1: <input type="number" name="txtLado1Escaleno" /></p>
+                                <p>Lado 2: <input type="number" name="txtLado2Escaleno" /></p>
+                                <p>Base: <input type="number" name="txtBaseEscaleno" /></p>
+                                <p>Altura: <input type="number" name="txtAlturaEscaleno" /></p>
+                                <p><input type="submit" value="Calcular" id="CEscaleno" /></p>
+                                @{
+                                    if (IsPost)
+                                    {
+                                        double base1 = Convert.ToDouble(Request["txtBaseEscaleno"]);
+                                        double l3 = Convert.ToDouble(Request["txtLado2Escaleno"]);
+                                        double l4 = Convert.ToDouble(Request["txtLado1Escaleno"]);
+                                        double altura = Convert.ToDouble(Request["txtAlturaEquilatero"]);
+
+                                        Triangulo objTrianguloEs = new Triangulo(base1, l3, l4, altura);
+                                        double PTEscaleno = objTrianguloEs.PerimetroTriangulo();
+                                        double ATEscaleno = objTrianguloEs.AreaTriangulo();
+
+                                        <p>Perímetro: @PTEscaleno</p>
+                                        <p>Área: @ATEscaleno</p>
+                                    }
+                                }
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+</body>
+</html>
